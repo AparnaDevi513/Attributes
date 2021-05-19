@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="35a89b76-4dca-4cee-8474-1ac59b096d09" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="attributesFlow" doc:id="ef53d62a-87d4-48fe-9868-7ffdce3b7e66" >
+		<http:listener doc:name="Listener" doc:id="5876edac-57a0-47a2-bc89-04907980c8d6" config-ref="HTTP_Listener_config" path="/attibute"/>
+		<logger level="INFO" doc:name="Logger" doc:id="2151ee5b-8faa-43d1-ac85-5f4e67625bbe" message='#["Attributesflow"]'/>
+		<logger level="INFO" doc:name="Logger" doc:id="16fb5cc9-4ea1-4033-85e6-814bf80b0e0e" message="#[attributes.queryParams.Values]"/>
+	</flow>
+</mule>
